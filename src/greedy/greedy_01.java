@@ -4,6 +4,7 @@ package greedy;
  * 그리디 알고리즘 01 : 거스름돈 문제
  */
 public class greedy_01 {
+    // 시간복잡도: O(N)
     public static void main(String[] args) {
         int n = 1260;
         int count = 0;
