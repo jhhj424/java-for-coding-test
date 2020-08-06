@@ -11,10 +11,12 @@ public class greedy_02 {
         int[] arr1 = {5,8,3};
         int[] arr2 = {2,4,5,4,6};
 
-        System.out.println(큰수의법칙(arr1, arr2)); // result: 46
+        System.out.println(큰수의법칙1(arr1, arr2)); // result: 46
+        System.out.println(큰수의법칙2(arr1, arr2)); // result: 46
     }
 
-    public static int 큰수의법칙(int[] arr1, int[] arr2) {
+    // 시간복잡도: O(N)
+    public static int 큰수의법칙1(int[] arr1, int[] arr2) {
         int ret = 0;
         int len = arr1[0];
         int M = arr1[1];
@@ -35,6 +37,26 @@ public class greedy_02 {
             ret += big;
         }
 
+        return ret;
+    }
+
+    // 시간복잡도: O(1)
+    public static int 큰수의법칙2(int[] arr1, int[] arr2) {
+        int ret = 0;
+        int len = arr1[0];
+        int M = arr1[1];
+        int K = arr1[2];
+        int big, small;
+        Arrays.sort(arr2);
+        big = arr2[len-1];
+        small = arr2[len-2];
+
+        // 가장 큰 수가 더해지는 횟수 계산
+        int cnt = (M / (K+1)) * K;
+        cnt += M % (K+1);
+
+        ret += cnt * big; // 가장 큰 수 더하기
+        ret += (M - cnt) * small; // 두 번째로 큰 수 더하기
         return ret;
     }
 }
