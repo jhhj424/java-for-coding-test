@@ -21,6 +21,7 @@ public class Implementation_01 {
             System.out.print(i + " ");
         }
     }
+    // 시간복잡도 O(N)
     public static int[] 상하좌우1(int n, String 이동계획서) {
         int x=1, y=1; // 시작 좌표
         int[] ret = new int[2]; // 도착 좌표
@@ -45,6 +46,8 @@ public class Implementation_01 {
 
         return ret;
     }
+
+    // 시간복잡도 O(N)
     public static int[] 상하좌우2(int n, String 이동계획서) {
         int x=1, y=1; // 시작 좌표
         int[] ret = new int[2]; // 도착 좌표
