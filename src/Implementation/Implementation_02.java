@@ -4,9 +4,9 @@ import java.util.*;
 
 /**
  * 구현 알고리즘 02 : 시각
- * 시간복잡도 : O(N)
  */
 public class Implementation_02 {
+    // 시간복잡도 : O(N)
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int N = scan.nextInt();
