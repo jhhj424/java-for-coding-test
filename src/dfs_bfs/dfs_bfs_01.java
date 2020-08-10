@@ -2,6 +2,7 @@ package dfs_bfs;
 
 /**
  * 탐색 알고리즘 01 : 음료수 얼려 먹기
+ * DFS 풀이
  */
 public class dfs_bfs_01 {
     static int n,m;
