@@ -18,9 +18,9 @@ public class dfs_bfs_01 {
     }
     public static int 음료수얼려먹기(int[][] map) {
         int ret = 0;
-        for(int i=0; i<map.length; i++) {
-            for(int j=0; j<map[i].length; j++) {
-                if(dfs(i,j) == true) {
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<m; j++) {
+                if(dfs(i,j)) {
                     ret++;
                 }
             }
