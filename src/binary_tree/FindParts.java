@@ -14,7 +14,7 @@ public class FindParts {
         Arrays.sort(nParts);
         StringBuilder sb = new StringBuilder();
         for(int i=0; i<m; i++) {
-            sb.append(findByBinarySearch(nParts, mparts[i], 0, n));
+            sb.append(findByBinarySearch(nParts, mparts[i], 0, n-1));
         }
         System.out.println(sb.toString());
     }
