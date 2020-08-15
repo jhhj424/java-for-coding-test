@@ -9,10 +9,9 @@ public class Tteokbokki {
         int n=4, m=6;// n=떡개수, m=손님이 요청한 떡의 길이
         int arr[] = {19,15,10,17};
         // 손님이 요청한 떡의 길이를 만족하는 절단기 높이의 최대값
-        int start = 0, end = (int)1e9; // (int)1e9: 인트 최대값
+        int start = 0, end = (int)3e9; // (int)1e9: 1*10^9 = 1000000000 // (int)3e9 : int 최대값
         int result = 0;
         while(start <= end) {
-            System.out.println("@");
             long total = 0;
             int mid = (start+end)/2;
             for(int i=0; i<n; i++) {
