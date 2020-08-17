@@ -15,11 +15,11 @@ public class FiboRecursion {
         if (n <= 1)
             return n;
         else
-            return fibo(n-2) + fibo(n-1);
+            return fibo2(n-2) + fibo2(n-1);
     }
 
     public static void main(String[] args) {
-        System.out.println(fibo(4));
-        System.out.println(fibo2(4));
+        System.out.println(fibo(50));
+        System.out.println(fibo2(50));
     }
 }
