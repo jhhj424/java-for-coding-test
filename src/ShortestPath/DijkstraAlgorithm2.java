@@ -24,6 +24,10 @@ import java.util.*;
  * 7
  * INFINITY
  */
+
+/*
+최단경로 - 다익스트라 알고리즘 : O(ElogV)
+ */
 class Node implements Comparable<Node> {
     int index, distance;
 
@@ -45,7 +49,7 @@ public class DijkstraAlgorithm2 {
     private static final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     private static final int INF = (int) 1e9; // 무한을 의미하는 값으로 10억을 설정
     // 각 노드에 연결되어 있는 노드에 대한 정보를 담는 배열
-    private static ArrayList<ArrayList<Node>> graph = new ArrayList<>();
+    private static ArrayList<ArrayList<Node>> graph = new ArrayList<ArrayList<Node>>();
     // 최단 거리 테이블 만들기
     private static int[] d = new int[100001];
 
@@ -60,15 +64,21 @@ public class DijkstraAlgorithm2 {
             assert node != null;
             int dist = node.distance; // 현재 노드까지의 비용
             int now = node.index; // 현재 노드
-            // 현재 노드가 이미 처리된 적이 있는 노드라면 무시
-            if (d[now] < dist) continue;
+            // 현재 노드까지의 비용이 현재 노드까지의 최소비용보다 클 경우 무시
+            if (d[now] < dist) continue; // d[now] : 현재 노드까지의 최단거리
             // 현재 노드와 연결된 다른 인접한 노드들을 확인
             for (int i = 0; i < graph.get(now).size(); i++) {
-                int cost = d[now] + graph.get(now).get(i).distance;
-                // 현재 노드를 거쳐서, 다른 노드로 이동하는 거리가 더 짧은 경우
-                if (cost < d[graph.get(now).get(i).index]) {
-                    d[graph.get(now).get(i).index] = cost;
-                    pq.offer(new Node(graph.get(now).get(i).index, cost));
+                // next_node : 현재 노드와 연결된 다른 노드
+                Node next_node = graph.get(now).get(i);
+                // cost : 현재 노드까지의 최단거리 + 다음 노드까지의 거리
+                int cost = d[now] + next_node.distance;
+                /*
+                 * 현재 노드를 거쳐서, 다음 노드로 이동하는 거리(cost)가
+                 * 다음 노드의 최단거리(d[next_node.index]) 보다 작을 경우
+                 */
+                if (cost < d[next_node.index]) {
+                    d[next_node.index] = cost;
+                    pq.offer(new Node(next_node.index, cost));
                 }
             }
         }
@@ -88,17 +98,17 @@ public class DijkstraAlgorithm2 {
 
         // 그래프 초기화
         for (int i = 0; i <= n; i++) {
-            graph.add(new ArrayList<>());
+            graph.add(new ArrayList<Node>());
         }
 
         // 모든 간선 정보를 입력받기
         for (int i = 0; i < m; i++) {
             st = new StringTokenizer(br.readLine());
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
-            int c = Integer.parseInt(st.nextToken());
-            // a번 노드에서 b번 노드로 가는 비용이 c라는 의미
-            graph.get(a).add(new Node(b, c));
+            int now = Integer.parseInt(st.nextToken());
+            int next = Integer.parseInt(st.nextToken());
+            int cost = Integer.parseInt(st.nextToken());
+            // now 노드에서 next 노드로 가는 비용이 cost 라는 의미
+            graph.get(now).add(new Node(next, cost));
         }
 
         // 다익스트라 알고리즘을 수행
