@@ -5,12 +5,12 @@ import java.util.*;
  * 최단경로 - 다익스트라 알고리즘
  * O(V^2)
  */
-class Node {
+class Node2 {
 
     private int index;
     private int distance;
 
-    public Node(int index, int distance) {
+    public Node2(int index, int distance) {
         this.index = index;
         this.distance = distance;
     }
@@ -30,7 +30,7 @@ public class DijkstraAlgorithm {
     // 노드의 개수는 최대 100,000개라고 가정
     public static int n, m, start;
     // 각 노드에 연결되어 있는 노드에 대한 정보를 담는 배열
-    public static ArrayList<ArrayList<Node>> graph = new ArrayList<ArrayList<Node>>();
+    public static ArrayList<ArrayList<Node2>> graph = new ArrayList<ArrayList<Node2>>();
     // 방문한 적이 있는지 체크하는 목적의 배열 만들기
     public static boolean[] visited = new boolean[100001];
     // 최단 거리 테이블 만들기
@@ -81,7 +81,7 @@ public class DijkstraAlgorithm {
 
         // 그래프 초기화
         for (int i = 0; i <= n; i++) {
-            graph.add(new ArrayList<Node>());
+            graph.add(new ArrayList<Node2>());
         }
 
         // 모든 간선 정보를 입력받기
@@ -90,7 +90,7 @@ public class DijkstraAlgorithm {
             int b = sc.nextInt();
             int c = sc.nextInt();
             // a번 노드에서 b번 노드로 가는 비용이 c라는 의미
-            graph.get(a).add(new Node(b, c));
+            graph.get(a).add(new Node2(b, c));
         }
 
         // 최단 거리 테이블을 모두 무한으로 초기화
