@@ -37,4 +37,17 @@ public class LuckyStraight {
         if(left_sum == rignt_sum) System.out.println("LUCKY");
         else System.out.println("READY");
     }
+
+    public static String testMethod(String s) {
+        String left = s.substring(0,s.length()/2);
+        String right = s.substring(s.length()/2);
+        int left_sum = 0, rignt_sum = 0;
+        for(int i=0; i<left.length(); i++) {
+            left_sum += left.charAt(i) - '0';
+            rignt_sum += right.charAt(i) - '0';
+        }
+
+        if(left_sum == rignt_sum) return "LUCKY";
+        else return "READY";
+    }
 }
