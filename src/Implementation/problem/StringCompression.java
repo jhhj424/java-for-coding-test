@@ -63,7 +63,7 @@ public class StringCompression {
     }
 
     public static int Comp(String s, int slice) {
-        String slice_letter = s.trim().substring(0, slice);
+        String slice_letter = s.substring(0, slice);
         StringBuilder sb = new StringBuilder();
         sb.append(slice_letter);
         int cnt = 1;
