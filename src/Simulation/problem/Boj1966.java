@@ -25,11 +25,10 @@ public class Boj1966 {
                     target = doc;
                 }
             }
-
             int result = 0;
             while (!q.isEmpty()) {
                 Doc now = q.peek();
-                if (isBest(now.중요도, q)) {
+                if (isBest(now.importance, q)) {
                     result++;
                     if (now.equals(target)) {
                         System.out.println(result);
@@ -44,42 +43,20 @@ public class Boj1966 {
 
     }
 
-    private static boolean isBest(int 중요도, Queue<Doc> q) {
-        int max = q.stream()
-                .mapToInt(value -> value.중요도)
+    private static boolean isBest(int importance, Queue<Doc> q) {
+        return q.stream()
+                .mapToInt(value -> value.importance)
                 .max()
-                .getAsInt();
-        return max == 중요도;
+                .getAsInt() // max
+                == importance;
     }
 
     static class Doc {
-        int 중요도;
+        int importance;
         int index;
-        Doc(int 중요도, int index) {
-            this.중요도 = 중요도;
+        Doc(int importance, int index) {
+            this.importance = importance;
             this.index = index;
-        }
-
-        @Override
-        public String toString() {
-            return "Doc{" +
-                    "중요도=" + 중요도 +
-                    ", index=" + index +
-                    '}';
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Doc doc = (Doc) o;
-            return 중요도 == doc.중요도 &&
-                    index == doc.index;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(중요도, index);
         }
     }
 }
